@@ -18,7 +18,7 @@ namespace GLBExtract
                 }
                 catch
                 {
-                    Console.WriteLine(fileData.ActualFilename);
+                    Console.WriteLine($"Filename invalid: {fileData.ActualFilename}");
                 }
             }
 
