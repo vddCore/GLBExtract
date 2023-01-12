@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace GLBExtract
 {
@@ -10,7 +7,22 @@ namespace GLBExtract
     {
         static void Main(string[] args)
         {
+            Directory.CreateDirectory("extr");
 
+            var glb = new GlbFile(args[0]);
+            foreach (var fileData in glb.FileData)
+            {
+                try
+                {
+                    File.WriteAllBytes(Path.Combine("extr", fileData.ActualFilename), fileData.Data);
+                }
+                catch
+                {
+                    Console.WriteLine(fileData.ActualFilename);
+                }
+            }
+
+            Console.WriteLine("OK.");
         }
     }
 }

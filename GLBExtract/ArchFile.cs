@@ -19,7 +19,7 @@ namespace GLBExtract
                 Flags = binaryReader.ReadInt32(),
                 Offset = binaryReader.ReadInt32(),
                 Length = binaryReader.ReadInt32(),
-                FileName = Encoding.UTF8.GetString(binaryReader.ReadBytes(16))
+                FileName = Encoding.UTF8.GetString(binaryReader.ReadBytes(16)).Replace("\0", "")
             };
 
             return archFile;
